@@ -1,4 +1,5 @@
 # Программа для игры с конфетами бота против человека.
+import emoji
 
 # Условие игры: На столе лежит 119 (число можно установить любое) конфет. Играют два игрока, делая ход друг после друга.
 # Первый ход определяется жеребьёвкой. За один ход можно забрать не более чем 28 конфет.
@@ -21,14 +22,14 @@ def game(message):
     total -= res
     if total < 29:
         if not player:
-            commands.bot.send_message(message.chat.id, f'Твоя взяла..!')
+            commands.bot.send_message(message.chat.id, f'Твоя взяла..!{emoji.emojize(":crying_face:")}')
             commands.bot.send_message(message.chat.id, "/help - список мои команд")
             commands.bot.send_message(message.chat.id, "/game - игра")
             total = 119
             player = bool
             return
         else:
-            commands.bot.send_message(message.chat.id, f'Я победил!')
+            commands.bot.send_message(message.chat.id, f'Я победил!{emoji.emojize(":upside-down_face:")}')
             commands.bot.send_message(message.chat.id, "/help - список мои команд")
             commands.bot.send_message(message.chat.id, "/game - игра")
             total = 119
