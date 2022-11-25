@@ -1,6 +1,7 @@
 import telebot
 import _token
 import functions
+import game
 
 bot = telebot.TeleBot(_token.API_TOKEN)
 
@@ -25,9 +26,14 @@ def calc_complex_message(message):
     functions.calc_complex_message(message)
 
 
+@bot.message_handler(commands=['game'])
+def game_start_message(message):
+    functions.game_start_message(message)
+
+
 @bot.message_handler(content_types='text')
 def message_reply(message):
-    functions.message_reply(message)
+    game.message_reply(message)
 
 
 bot.polling()
